@@ -1,0 +1,7 @@
+<div ng-controller="NotificationController">
+<div>
+Your Blogpost titled "
+{{notification.blogTitle}}" 
+is <b>{{notification.approvalStatus}}</b>
+<span ng-if="notification.approvalStatus=='Rejected'">for the reason{{notification.rejectionReason}}</span>
+</div>

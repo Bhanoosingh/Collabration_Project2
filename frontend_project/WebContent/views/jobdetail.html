@@ -1,0 +1,15 @@
+<div ng-controller="JobController">
+<h3>Job Details</h3>
+<div class="panel panel-heading">
+<strong>Job Title</strong> : {{job.jobTitle}}<br>
+<div class="panel-body">
+Job Description: {{job.jobDescription}}<br>
+Skills Required:{{job.skillsRequired}}<br>
+Years of Experience : {{job.yrsOfExp}}<br>
+Location: {{job.location}}<br>
+Salary: {{job.salary}}<br>
+Posted On {{job.postedOn | date:'medium'}}<br>
+</div>
+</div>
+<a href="#/getalljobs">Back</a>
+</div>

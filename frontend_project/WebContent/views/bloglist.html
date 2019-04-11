@@ -1,0 +1,48 @@
+<div class="container" ng-controller="BlogpostController">
+	<div class="form-group">
+		<div ng-show="loggedInUser.role=='ADMIN'">
+			<span ng-if="blogsWaitingForApproval.length==0">No Blogs
+				waiting for approval</span>
+			<div class="container" ng-hide="blogsWaitingForApproval.length==0">
+				<div class="panel panel-info">
+					<div class="panel-heading">List of blogs waiting for approval</div>
+					<div class="panel-body">
+						<div ng-repeat="blog in blogsWaitingForApproval">
+							<br>
+							<b><a href="#/getblog/{{blog.id}}">{{blog.blogTitle}}</a></b><br>
+							<b>Author:</b>{{blog.postedBy.firstname}}&nbsp;{{blog.postedBy.lastname}}<br>
+							{{blog.postedOn | date:'medium'}} <br>
+							
+						</div>
+					</div>
+				</div>
+			</div>
+		</div>
+
+
+	</div>
+	<div>
+	<div class="container">
+		<div class="panel panel-info">
+			<div class="panel-heading">List of blogs approved</div>
+			<div class="panel-body">
+				<div ng-repeat="blog in blogsApproved">
+					
+					<div >
+						<br>
+						<b><a href="#/getblog/{{blog.id}}">{{blog.blogTitle}}</a></b><br>
+						<b>Author:</b>{{blog.postedBy}}<br>
+						<b>Posted On:</b>4{{blog.postedOn | date:'medium'}} <br>
+					</div>
+				</div>
+			</div>
+		</div>
+
+
+	</div>
+</div>
+
+	
+</div>
+
+

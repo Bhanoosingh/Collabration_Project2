@@ -1,0 +1,10 @@
+<div ng-controller="FriendCtrl">
+<ul style="list-style:none;">
+<li ng-repeat="friend in friends"><!-- friend is an object of type User -->
+{{friend.firstname}}&nbsp;{{friend.lastname}}<br>
+{{friend.email}}<br>
+<img src="http://localhost:8081/middleware_project/getimage/{{friend.email}}" 
+ width="60px" height="60px" alt="No Image">
+</li>
+
+</ul>

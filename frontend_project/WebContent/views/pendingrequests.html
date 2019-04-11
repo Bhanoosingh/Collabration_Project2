@@ -1,0 +1,13 @@
+<div ng-controller="FriendCtrl">
+<table class="table table-striped">
+<tr ng-repeat="friendRequest in friendRequests">
+<td>{{friendRequest.fromId}}</td>
+<td><img 
+src="http://localhost:8081/middleware_project/getimage/{{friendRequest.fromId}}" 
+height="50px" width="50px" alt="Image not available"></td>
+<!-- friendRequest.status='P' -->
+<td><button type="button" class="button button-primary" ng-click="updateFriendRequest(friendRequest,'A')">Accept</button></td><!-- onclick update status from 'P' to 'A' -->
+<td><button type="button" class="button button-warning" ng-click="updateFriendRequest(friendRequest,'D')">Delete</button></td><!--  onclick delete from friend where id=? -->
+</tr>
+
+</table>

@@ -1,0 +1,20 @@
+<div ng-controller="FriendCtrl">
+
+<div class="container">
+	<div class="row" style="width:200px">
+		<div ng-repeat="user in suggestedUsers">
+			<div class="panel panel-info">
+				<div class="panel-heading">
+				<img src="http://localhost:8081/middleware_project/getimage/{{user.email}}" height="50px" width="50px" alt="No Image">
+				</div>
+				<div class="panel-body">
+				<b>{{user.email}}</b><br>
+				<b>{{user.firstname}}&nbsp;{{user.lastname}}</b>
+				
+				<button id="addFriend" name="addFriend" class="btn btn-primary" ng-click="addFriend(user)">addFriend</button>
+				</div>
+			</div>
+		</div>
+	</div>
+
+</div>

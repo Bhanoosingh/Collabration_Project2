@@ -1,0 +1,33 @@
+<!DOCTYPE html>
+<html>
+<head>
+<meta charset="ISO-8859-1">
+
+</head>
+<body>
+
+	<div id="chat-box" ng-controller="ChatCtrl">
+		<form ng-submit="addMessage()" name="chatMsg">
+			<div class="col-sm-12">
+				<div class="row" style="background: teal; color:#fff;">
+					<div class="col-sm-9 form-group">
+						<label align="center">Message <input type="text"
+							class="form-control" placeholder="Enter message here" style="width:550px;"
+							ng-model="message"></label> 
+						<button id="btn" class="btn btn-primary"
+							ng-disabled="message.length>250||message.length==0">Send</button><span style="float:right; margin-top:5px;">Maximum <span classs="count"
+							ng-bind="max - message.length"> 250 </span></span>
+
+					</div>
+				</div>
+			</div>
+		</form>
+		<div class="jumbotron" style="background:rgba(255,255,255,0.0);">
+			<p ng-repeat="msg in messages" color="lightblue">
+				<span> {{msg.message}} </font>
+				</span>
+			</p>
+		</div>
+	</div>
+</body>
+</html>

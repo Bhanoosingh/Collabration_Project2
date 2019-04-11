@@ -1,0 +1,23 @@
+.rw-number-notification {
+    position: absolute;
+    top: -7px;
+    right: -6px;
+    padding: 3px 3px 2px 3px;
+    background-color: red;
+    color: white;
+    font-family: arial;
+    font-weight: bold;
+    font-size: 10px;
+    border-radius: 4px;
+    box-shadow: 1px 1px 1px silver;
+}
+
+.dropdown-content {
+    display: block;
+    position: absolute;
+    background-color: #f9f9f9;
+    min-width: 250px;
+    box-shadow: 0px 8px 16px 0px rgba(0,0,0,0.2);
+    padding: 12px 16px;
+    z-index: 1;
+}

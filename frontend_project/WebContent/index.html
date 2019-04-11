@@ -1,0 +1,155 @@
+<!DOCTYPE html>
+<html>
+<head>
+<meta charset="ISO-8859-1">
+<title>Insert title here</title>
+<script src="js/jquery.min.js"></script>
+
+<link href="assets/css/bootstrap.css" rel="stylesheet">
+<link href="assets/css/font-awesome.min.css" rel="stylesheet">
+<script src="js/bootstrap.js" type="text/javascript"></script>
+
+	<link href="assets/common/fileinput.css" media="all" rel="stylesheet" type="text/css"/>
+    
+    <link href="themes/explorer/theme.css" media="all" rel="stylesheet" type="text/css"/>
+   
+    <script src="js/fileinput.js" type="text/javascript"></script>
+    <script src="themes/explorer/theme.js" type="text/javascript"></script>
+
+<link rel="stylesheet" href="resources/css/login.css">
+<link rel="stylesheet" href="resources/css/notification.css">
+<link rel="stylesheet" href="assets/common/portfolio.css">
+
+
+
+</head>
+<body ng-app="app">
+
+	<header>
+		<nav class="navbar navbar-default">
+
+			<div class="container-fluid">
+				<button type="button" class="navbar-toggle collapsed"
+					data-toggle="collapse" data-target="#collapse-example"
+					aria-expanded="false">
+					<span class="sr-only">Toggle navigation</span> <span
+						class="icon-bar"></span> <span class="icon-bar"></span> <span
+						class="icon-bar"></span>
+				</button>
+				<div class="navbar-header">
+					<a class="navbar-brand" href="/"><img
+						src="resources/images/niit-l-reut.jpg" width="45px" height="50px"
+						alt="NIIT"></a>
+				</div>
+				<div class="collapse navbar-collapse" id="collapse-example">
+					<ul class="nav navbar-nav ">
+						<li><a href="#/register" ng-hide="loggedInUser.firstname">Sign
+								Up</a></li>
+						<li><a href="#/login" ng-hide="loggedInUser.firstname">Sign
+								In</a></li>
+						<li><a href="" ng-show="loggedInUser.firstname">Welcome
+								{{loggedInUser.firstname}}&nbsp; {{loggedInUser.lastname}}</a></li>
+
+
+						<li class="dropdown"><a href="" class=" dropdown-toggle"
+							type="button" data-toggle="dropdown"
+							ng-show="loggedInUser.firstname">Job<b class="caret"></b></a>
+
+							<ul class="dropdown-menu">
+								<li><a href="#/addjob" ng-show="loggedInUser.role=='ADMIN'">Add
+										Job</a></li>
+								<li><a href="#/getalljobs">All Job</a></li>
+
+							</ul></li>
+
+
+						<li class="dropdown"><a href="" class="dropdown-toggle"
+							data-toggle="dropdown" ng-show="loggedInUser.firstname">Blog<b
+								class="caret"></b></a>
+							<ul class="dropdown-menu">
+								<li><a href="#/addblog">Add Blog</a></li>
+								<li><a href="#/getblogs">All Blogs</a></li>
+							</ul></li>
+
+						<li class="dropdown"><a href="" class="dropdown-toggle"
+							data-toggle="dropdown" ng-show="loggedInUser.firstname">Friend<b
+								class="caret"></b></a>
+							<ul class="dropdown-menu">
+								<li><a href="#/suggestedusers">Suggested Users</a></li>
+								<li><a href="#/pendingrequests">Pending request</a></li>
+							</ul></li>
+
+						<li><a href="#/profilepic" ng-show="loggedInUser.firstname">My
+								Profile</a></li>
+
+						<li><a href="#profilepic" ng-show="currentUser.username">
+								<img
+								src="http://localhost:8081/middleware_project/getimage/{{loggedInUser.email}}"
+								alt="uploadprofile pic" width="40px" height="40px">
+						</a></li>
+
+						<li class="dropdown"><a href="" class="dropdown-toggle"
+							data-toggle="dropdown" ng-show="loggedInUser.firstname"
+							ng-controller="NotificationController"> <span
+								class="glyphicon glyphicon-globe"> <span
+									class="rw-number-notification" ng-if="notificationsCount>0">{{notificationsCount}}</span></span></a>
+							<ul class="dropdown-menu">
+								<span class="dropdown-content">
+									<li ng-repeat="n in notifications"><a
+										href="#/getnotification/{{n.id}}"> Blog titled <b>{{n.blogTitle}}</b>
+											approval status is updated
+									</a>
+										<hr></li>
+								</span>
+							</ul></li>
+						<li><a href="#/chat" ng-show="loggedInUser.firstname">chat
+						</a></li>
+
+						<li><a href="" ng-click="logout()"
+							ng-show="loggedInUser.firstname">logout</a></li>
+
+
+					</ul>
+
+				</div>
+			</div>
+		</nav>
+	</header>
+	<div ng-view></div>
+</body>
+
+<script type="text/javascript" src="js/angular.js"></script>
+<script type="text/javascript" src="js/angular-route.js"></script>
+<script type="text/javascript" src="js/angular-cookies.js"></script>
+
+<script type="text/javascript" src="js/app.js"></script>
+
+<script type="text/javascript" src="controllers/usercontroller.js"></script>
+<script type="text/javascript" src="service/userService.js"></script>
+
+<script type="text/javascript" src="controllers/jobcontroller.js"></script>
+<script type="text/javascript" src="service/JobService.js"></script>
+
+<script type="text/javascript" src="controllers/blogcontroller.js"></script>
+<script type="text/javascript" src="service/blogpostservice.js"></script>
+
+<script type="text/javascript"
+	src="controllers/blogpostdetailscontroller.js"></script>
+<script type="text/javascript" src="controllers/blogpostcontroller.js"></script>
+<script type="text/javascript" src="controllers/homecontroller.js"></script>
+
+<script type="text/javascript"
+	src="controllers/notificationcontroller.js"></script>
+<script type="text/javascript" src="service/NotificationService.js"></script>
+<script type="text/javascript"
+	src="controllers/notificationcontroller.js"></script>
+
+<script type="text/javascript" src="service/friendservice.js"></script>
+<script type="text/javascript" src="controllers/friendcontroller.js"></script>
+
+<script type="text/javascript" src="service/chatservice.js"></script>
+<script type="text/javascript" src="controllers/chatcontroller.js"></script>
+
+<script type="text/javascript" src="js/sockjs.min.js"></script>
+<script type="text/javascript" src="js/stomp.min.js"></script>
+</html>

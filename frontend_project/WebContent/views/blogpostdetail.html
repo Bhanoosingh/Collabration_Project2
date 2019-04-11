@@ -1,0 +1,29 @@
+<div class="container"   ng-controller="BlogPostDetailController">
+	<div class="panel panel-info">
+		<div class="panel-heading">
+			<p ng-bind-html="title">
+			{{blogPost}}
+			</p><br> <b>Author :
+				{{blogPost.postedBy}}&nbsp;{{blogPost.postedBy.lastname}}</b><br>
+			<b>Posted On: {{blogPost.postedOn | date:'medium'}}</b>
+		</div>
+		<div class="panel-body">
+		    <p ng-bind-html="content"></p><!-- content is blogPost.blogContent as HTML -->
+		</div>
+	</div>
+
+</div>
+<!--  $scope.isLiked = true, glyphicon in blue -->
+<!-- $scope.isLiked=false, glyphicono in black -->
+<div>
+<div ng-show="isLiked"><!-- result of the query select * from blogpostlikes where post_id=? and u_email=? -->
+<a><span class="glyphicon glyphicon-thumbs-up" style="color:blue" ng-click="updateLikes(blogPost.id)"></span></a>
+<!-- delete data from blogpostlikes and decrement the number of likes -->
+</div>
+<div ng-show="!isLiked">
+<a><span class="glyphicon glyphicon-thumbs-up" style="color:black" ng-click="updateLikes(blogPost.id)"></span></a>
+<!--  insert data into blogpostlikes and increment the number of likes -->
+</div>
+{{blogPost.likes}} likes
+</div>
+<!--  updateLikes(735) when you click glyphicon , same function for both blue and black -->

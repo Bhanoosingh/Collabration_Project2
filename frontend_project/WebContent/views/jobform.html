@@ -1,0 +1,50 @@
+
+<span class="error" ng-show="error.message">
+{{error.message}}
+</span>
+<div class="container" ng-controller="JobController">
+
+<div class="form-group" >
+<form role="form" method="post">
+<label>Enter job title</label>
+<input type="text" ng-model="job.jobTitle" class="form-control">
+</div>
+
+<div class="form-group" >
+
+<label>Enter Job Description</label>
+<textarea ng-model="job.jobDescription" class="form-control"></textarea>
+</div>
+
+<div class="form-group">
+
+<label>Enter Salary</label>
+<input type="text" ng-model="job.salary" class="form-control">
+</div>
+
+<div class="form-group">
+
+<label>Enter Location</label>
+<input type="text" ng-model="job.location" class="form-control">
+</div>
+
+<div class="form-group">
+
+<label>Skills Required</label>
+<input type="text" ng-model="job.skillsRequired" class="form-control">
+</div>
+
+<div class="form-group">
+
+<label>Years of Experience</label>
+<input type="text" ng-model="job.yrsOfExp" class="form-control">
+</div>
+
+<div class="form-group">
+
+<button id="submit" name="submit" class="button button-primary" ng-click="addJob(ADMIN)" >Add Job</button>
+</div>
+
+
+</form>
+</div>
