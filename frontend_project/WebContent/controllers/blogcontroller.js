@@ -1,7 +1,9 @@
 /**
  * 
- */
+ *//*
 app.controller('BlogController',function($scope,$location,BlogService,$rootScope,$sce){
+$scope.blogsApproved=[];
+$scope.blogsWaitingForApproval=[];
 
 	$scope.addBlog=function(blog){
 		BlogService.addBlog(blog).then(function(response){
@@ -29,8 +31,9 @@ app.controller('BlogController',function($scope,$location,BlogService,$rootScope
 	}
 	//List of blogs approved
 	BlogService.getApprovedBlogs().then(function(response){
-		$scope.blogsApproved=response.data //select * from blogpost where approved=true
-		alert('blogs approved size ' + $scope.blogsApproved.length)
+		$scope.blogsApproved=response.data; //select * from blogpost where approved=true
+		alert(blogsApproved);
+		alert('blogs approved size ' + $scope.blogsApproved);
 	},function(response){
 		$rootScope.error=response.data
 		if(response.status==401)
@@ -61,3 +64,4 @@ app.controller('BlogController',function($scope,$location,BlogService,$rootScope
 	
 })
 
+*/

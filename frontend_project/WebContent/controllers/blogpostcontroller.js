@@ -28,47 +28,8 @@ app.controller('BlogpostController',function($scope,$location,BlogService,$rootS
 	}
 	//List of blogs approved
 	BlogService.getApprovedBlogs().then(function(response){
-		var objarr=[];
-
 		
-		for(r=0;r<response.data.length;r++){
-			blog = {id:0,blogTitle:'',blogContent:'',approved:'',postedOn:'',likes:0,postedBy:''}
-		for(i=0;i<response.data[r].length;i++){
-			if(i==0)
-				{
-				blog.id=response.data[r][i];
-				
-				}
-			if(i==1)
-			{
-			blog.blogTitle=response.data[r][i];
-			}
-			if(i==2)
-			{
-			blog.blogContent=response.data[r][i];
-			}
-			if(i==3)
-			{
-				blog.approved=response.data[r][i];
-			
-			}
-			if(i==4)
-			{
-			blog.postedOn=response.data[r][i];
-			}
-			if(i==5)
-			{
-			blog.likes=response.data[r][i];
-			}
-			if(i==7)
-			{
-				blog.postedBy=response.data[r][i];
-			}
-		}
-			objarr[r]=blog;
-		}
-		
-		$scope.blogsApproved=objarr //select * from blogpost where approved=true
+		$scope.blogsApproved=response.data //select * from blogpost where approved=true
 		alert('blogsApproved approved size ' + $scope.blogsApproved.length);
 	},function(response){
 		$rootScope.error=response.data

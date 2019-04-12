@@ -2,7 +2,6 @@ package com.niit.dao;
 
 import javax.transaction.Transactional;
 
-import org.hibernate.Query;
 import org.hibernate.Session;
 import org.hibernate.SessionFactory;
 import org.springframework.beans.factory.annotation.Autowired;
@@ -18,7 +17,6 @@ public class BlogPostLikesDaoImpl implements BlogPostLikesDao {
 	private SessionFactory sessionFactory;
 
 	public BlogPostLikes hasUserLikedPost(int postId, String email) {
-		Session session=sessionFactory.getCurrentSession();
 		//HQL => from BlogPostLikes where blogPost.id=? and user.email=?
 		//SQL => select * from Blobpostlikes_table where blogpost_id=? and user_email=?
 		//Logged in james.smith@xyz.com
@@ -26,10 +24,14 @@ public class BlogPostLikesDaoImpl implements BlogPostLikesDao {
 		//select * from blogpost where id=100
 		//select * from blogpostlikes where blogpost_id=100 and user_email='james.smith@xyz.com'
 		//blogpostdetails.html -> 1 query blogpostdetail 2nd query - glyphicon color
-		Query query=session.createQuery("from BlogPostLikes where blogPost.id=? and user.email=?");
-		query.setInteger(0, postId);
-		query.setString(1, email);
-		BlogPostLikes blogPostLikes=(BlogPostLikes)query.uniqueResult();
+		System.out.println("select * from BlogPostLikes_table where blogPost_id="+postId+" and user_email='"+email+"'");
+		BlogPostLikes blogPostLikes=(BlogPostLikes)sessionFactory.getCurrentSession()
+				.createSQLQuery("select * from BlogPostLikes_table where blogPost_id=?1 and user_email=?2")
+				.addEntity(BlogPostLikes.class)
+				.setInteger(1, postId)
+				.setString(2, email)
+				.uniqueResult();
+		
 		return blogPostLikes;// 1 object / null -> glyphicon color[1 object -blue color  , null - black color]
 	}
      // when user clicks the glyphicon in frontend

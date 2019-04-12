@@ -26,13 +26,14 @@
 		<div class="panel panel-info">
 			<div class="panel-heading">List of blogs approved</div>
 			<div class="panel-body">
+			
 				<div ng-repeat="blog in blogsApproved">
 					
 					<div >
 						<br>
 						<b><a href="#/getblog/{{blog.id}}">{{blog.blogTitle}}</a></b><br>
-						<b>Author:</b>{{blog.postedBy}}<br>
-						<b>Posted On:</b>4{{blog.postedOn | date:'medium'}} <br>
+							<b>Author:</b>{{blog.postedBy.firstname}}&nbsp;{{blog.postedBy.lastname}}<br>
+							{{blog.postedOn | date:'medium'}} <br>
 					</div>
 				</div>
 			</div>

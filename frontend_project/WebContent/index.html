@@ -1,28 +1,22 @@
 <!DOCTYPE html>
 <html>
-<head>
-<meta charset="ISO-8859-1">
-<title>Insert title here</title>
-<script src="js/jquery.min.js"></script>
-
-<link href="assets/css/bootstrap.css" rel="stylesheet">
-<link href="assets/css/font-awesome.min.css" rel="stylesheet">
-<script src="js/bootstrap.js" type="text/javascript"></script>
-
-	<link href="assets/common/fileinput.css" media="all" rel="stylesheet" type="text/css"/>
-    
-    <link href="themes/explorer/theme.css" media="all" rel="stylesheet" type="text/css"/>
-   
-    <script src="js/fileinput.js" type="text/javascript"></script>
-    <script src="themes/explorer/theme.js" type="text/javascript"></script>
-
-<link rel="stylesheet" href="resources/css/login.css">
-<link rel="stylesheet" href="resources/css/notification.css">
-<link rel="stylesheet" href="assets/common/portfolio.css">
-
-
-
-</head>
+	<head>
+		<meta charset="ISO-8859-1">
+		<title>Insert title here</title>
+		<link href="assets/css/bootstrap.css" rel="stylesheet">
+		<link href="assets/css/font-awesome.min.css" rel="stylesheet">
+		<link rel="stylesheet" href="resources/css/login.css">
+		<link rel="stylesheet" href="resources/css/notification.css">
+		<link rel="stylesheet" href="assets/common/portfolio.css">
+		<link href="/frontend_project/resources/css/fileinput.css" media="all" rel="stylesheet" type="text/css" />
+		<link href="/frontend_project/themes/explorer/theme.css" media="all" rel="stylesheet" type="text/css" />
+		
+		<script src="https://code.jquery.com/jquery-2.2.1.min.js"></script>
+		<script src="/frontend_project/js/fileinput.js" type="text/javascript"></script>
+		<script src="/frontend_project/themes/explorer/theme.js" type="text/javascript"></script>
+		<script src="js/bootstrap.js" type="text/javascript"></script>
+		
+	</head>
 <body ng-app="app">
 
 	<header>
@@ -82,10 +76,10 @@
 						<li><a href="#/profilepic" ng-show="loggedInUser.firstname">My
 								Profile</a></li>
 
-						<li><a href="#profilepic" ng-show="currentUser.username">
+						<li><a href="#profilepic" >
 								<img
 								src="http://localhost:8081/middleware_project/getimage/{{loggedInUser.email}}"
-								alt="uploadprofile pic" width="40px" height="40px">
+								 alt="uploadprofile pic" width="40px" height="40px">
 						</a></li>
 
 						<li class="dropdown"><a href="" class="dropdown-toggle"

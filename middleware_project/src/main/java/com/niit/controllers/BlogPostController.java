@@ -44,6 +44,7 @@ public class BlogPostController {
 			blogPost.setPostedOn(new Date());
 			User postedBy=userDao.getUser(email);
 			blogPost.setPostedBy(postedBy.getFirstname());
+			blogPost.setApproved(true);
 			try{
 			blogPostDao.addBlogPost(blogPost);
 			return new ResponseEntity<BlogPost>(blogPost,HttpStatus.OK);//1st callback function
@@ -57,19 +58,18 @@ public class BlogPostController {
 		@RequestMapping(value="/getblogs/{approved}",method=RequestMethod.GET)
 		public ResponseEntity<?> getBlogs(@PathVariable boolean approved,HttpSession session){
 			String email=(String)session.getAttribute("loginId");
-			if(email==null){
-				ErrorClazz error=new ErrorClazz(4,"Unauthrozied access.. Please login");
-				return new ResponseEntity<ErrorClazz>(error,HttpStatus.UNAUTHORIZED); //2nd callback function
-			}
-			
-			//List of blogs waiting for approval - only ADMIN can view - Authorized 
-			if(!approved){
-				User user=userDao.getUser(email);
-				if(!user.getRole().equals("ADMIN")){ //NOT ADMIN
-					ErrorClazz error=new ErrorClazz(4,"Access Denied..");
-					return new ResponseEntity<ErrorClazz>(error,HttpStatus.UNAUTHORIZED);
-				}
-			}
+		/*
+		 * if(email==null){ ErrorClazz error=new
+		 * ErrorClazz(4,"Unauthrozied access.. Please login"); return new
+		 * ResponseEntity<ErrorClazz>(error,HttpStatus.UNAUTHORIZED); //2nd callback
+		 * function }
+		 * 
+		 * //List of blogs waiting for approval - only ADMIN can view - Authorized
+		 * if(!approved){ User user=userDao.getUser(email);
+		 * if(!user.getRole().equals("ADMIN")){ //NOT ADMIN ErrorClazz error=new
+		 * ErrorClazz(4,"Access Denied.."); return new
+		 * ResponseEntity<ErrorClazz>(error,HttpStatus.UNAUTHORIZED); } }
+		 */
 			
 			List<BlogPost> blogs=blogPostDao.getBlogs(approved);//false[ADMIN] or true
 			System.out.println("----------------------------------Selected blog list size"+blogs.size());
